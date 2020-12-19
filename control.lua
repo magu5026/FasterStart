@@ -7,9 +7,11 @@ end
 
 function ON_INIT()
 	Init()
-			
+
 	for _,player in pairs(game.players) do
-		create_armor(player)
+		if player and player.connected then
+			create_armor(player)
+		end
 	end
 end
 
