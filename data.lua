@@ -18,7 +18,8 @@ fusion_robot_item.place_result = "fusion-construction-robot"
 
 local mini_fusion_reactor_item = table.deepcopy(data.raw['item']['fusion-reactor-equipment'])
 mini_fusion_reactor_item.name = "mini-fusion-reactor-equipment"
-mini_fusion_reactor_item.icon = "__FasterStart__/graphics/icons/mini-fusion-reactor-equipment.png"
+mini_fusion_reactor_item.icon = nil
+mini_fusion_reactor_item.icons = {{icon = "__base__/graphics/icons/fusion-reactor-equipment.png", tint = {r=0.53, g=0.81, b=0.92, a=1}} }
 mini_fusion_reactor_item.placed_as_equipment_result = "mini-fusion-reactor-equipment"
 
 
