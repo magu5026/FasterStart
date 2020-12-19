@@ -1,45 +1,59 @@
-local MODNAME = "FasterStart"
+require("lib")
 
-function init()
-	global.PlayerList = global.PlayerList or {}
+local modName = "FasterStart"
+
+function Init()
+	global = {}
+	global.PlayerList = {}
 end
 
-function ON_INIT()
-	init()
-
+function CheckAllPlayers()
 	for _,player in pairs(game.players) do
 		if player and player.connected then
-			create_armor(player)
+			GiveArmor(player)
 		end
 	end
 end
 
-function ON_CONFIGURATION_CHANGED(data)
-	init()
+function OnInit()
+	Init()
+	CheckAllPlayers()
+end
+script.on_init(OnInit)
 
-	if NeedMigration(data,MODNAME) then
-		local old_players = global.FasterStart.PlayerList
-		global = {}
-		global.PlayerList = old_players
+function OnConfigurationChanged(data)
+	if IsModChanged(data,modName) then
+		local oldVersion = GetOldVersion(data,modName)
+		if oldVersion < "00.17.04" then
+			Init()
+			CheckAllPlayers()
+		end	
 	end
 end	
+script.on_configuration_changed(OnConfigurationChanged)
 
-function GIVE_ITEM(event)
-	local player = game.players[event.player_index]
-	create_armor(player)
+function OnPlayerSpawned(event)
+	local player = game.get_player(event.player_index)
+	GiveArmor(player)
 end	
+script.on_event({on_player_joined_game,defines.events.on_player_created},OnPlayerSpawned)
 
-function create_armor(player)
-	if Exists(player) then return end
+function GiveArmor(player)
+	if Contains(global.PlayerList,player) then return end
 	
-	local armor_inventory = player.get_inventory(defines.inventory.player_armor)
-	local player_inventory = player.get_inventory(defines.inventory.player_main)
+	local armor_inventory = player.get_inventory(defines.inventory.character_armor)
+	local player_inventory = player.get_inventory(defines.inventory.character_main)
 	
 	if (not player.character or not armor_inventory) then return end
 	
+	if (armor_inventory.get_item_count("mini-power-armor") > 0 or player_inventory.get_item_count("fusion-construction-robot") > 0) then
+		table.insert(global.PlayerList,player)
+		return
+	end
+		
 	local contents = armor_inventory.get_contents()
 	local armor
-	
+		
 	if Count(contents) > 0 then 
 		player_inventory.insert({name="mini-power-armor"})
 		armor = player_inventory.find_item_stack("mini-power-armor")
@@ -57,40 +71,3 @@ function create_armor(player)
 			
 	table.insert(global.PlayerList,player)
 end
-
-function Exists(player)
-	for _,item in pairs(global.PlayerList) do
-		if item == player then return true end
-	end
-	return false
-end
-
-function NeedMigration(data,modname)
-	if data 
-	 and data.mod_changes 
-	 and data.mod_changes[modname] 
-	 and data.mod_changes[modname].old_version then 
-		return true 
-	end
-	return false
-end
-
-function GetOldVersion(data,modname)
-	return FormatVersion(data.mod_changes[modname].old_version)
-end
-
-function FormatVersion(version)
-	return string.format("%02d.%02d.%02d", string.match(version, "(%d+).(%d+).(%d+)"))
-end
-
-function Count(list)
-	local i = 0
-	for _ in pairs(list) do
-		i = i + 1
-	end
-	return i
-end
-
-script.on_init(ON_INIT)
-script.on_configuration_changed(ON_CONFIGURATION_CHANGED)
-script.on_event({on_player_joined_game,defines.events.on_player_created},GIVE_ITEM)

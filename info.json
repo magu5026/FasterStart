@@ -1,9 +1,9 @@
 {
   "name": "FasterStart",
-  "version": "0.17.3",
+  "version": "0.17.4",
   "title": "FasterStart",
   "author": "magu5026",
   "factorio_version": "0.17",
   "description": "A starter kit with a small modular armor with a small fusion reactor, night vision, exoskeleton, roboport and 25 fusion construction robots.",
-  "dependencies": ["base >= 0.17.9"]
+  "dependencies": ["base >= 0.17.35"]
 }

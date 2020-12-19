@@ -1,42 +1,47 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.4
+Date: 2019-05-03
+  Changes:
+    - Update for factorio 0.17.35.
+---------------------------------------------------------------------------------------------------
 Version: 0.17.3
-Date: 10. 03. 2019
+Date: 2019-03-10
   Changes:
     - Fixed the version issue. You have to update it manually. I'm sorry :(
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.0401
-Date: 02. 03. 2019
+Version: 0.17.2
+Date: 2019-03-02
   Bugfixes:
     - Fixed a bug that occurred when the player already had armor.
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.0201
-Date: 01. 03. 2019
+Version: 0.17.1
+Date: 2019-03-01
   Major Features:
     - Update for Factorio 0.17.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.4
-Date: 27. 05. 2018
+Date: 2018-05-27
   Bugfixes:
     - Fixed multiplayer bug.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.3
-Date: 19. 02. 2018
+Date: 2018-02-19
   Bugfixes:
     - Fixed multiplayer fix.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.2
-Date: 26. 02. 2018
+Date: 2018-02-26
   Changes:
     - Multiplayer compatibility.
   Bugfixes:
     - Fixed multiplayer bug
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.1
-Date: 27. 12. 2017
+Date: 2017-12-27
   Major Features:
     - Update for Factorio 0.16.
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.0
-Date: 16. 07. 2017
+Date: 2017-07-16
   Major Features:
     - Added a starter kit with a small modular armor with a small fusion reactor, night vision, exoskeleton, roboport and 25 fusion construction robots.
