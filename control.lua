@@ -1,11 +1,38 @@
-function ON_INIT()
+local MODNAME = "FasterStart"
+
+local function Init()
 	global.FasterStart = global.FasterStart or {}
 	global.FasterStart.PlayerList = global.FasterStart.PlayerList or {}
-		
+end
+
+function ON_INIT()
+	Init()
+			
 	for _,player in pairs(game.players) do
 		create_armor(player)
 	end
 end
+
+function ON_CONFIGURATION_CHANGED(data)
+	Init()
+	
+	if NeedMigration(data,MODNAME) then
+		local old_version = GetOldVersion(data,MODNAME)
+		if old_version < "00.16.03" then
+			for _,player in pairs(game.players) do
+				if player.character then
+					local player_armor = player.get_inventory(defines.inventory.player_armor)
+					local player_main = player.get_inventory(defines.inventory.player_main)
+					if (player_armor.find_item_stack("mini-power-armor") or player_main.find_item_stack("fusion-construction-robot")) then
+						table.insert(global.FasterStart.PlayerList,player)
+					else
+						create_armor(player)
+					end				
+				end
+			end
+		end
+	end
+end	
 
 function GIVE_ITEM(event)
 	local player = game.players[event.player_index]
@@ -34,5 +61,24 @@ function Exists(player)
 	return false
 end
 
+function NeedMigration(data,modname)
+	if data 
+	 and data.mod_changes 
+	 and data.mod_changes[modname] 
+	 and data.mod_changes[modname].old_version then 
+		return true 
+	end
+	return false
+end
+
+function GetOldVersion(data,modname)
+	return FormatVersion(data.mod_changes[modname].old_version)
+end
+
+function FormatVersion(version)
+	return string.format("%02d.%02d.%02d", string.match(version, "(%d+).(%d+).(%d+)"))
+end
+
 script.on_init(ON_INIT)
+script.on_configuration_changed(ON_CONFIGURATION_CHANGED)
 script.on_event({on_player_joined_game,defines.events.on_player_created},GIVE_ITEM)

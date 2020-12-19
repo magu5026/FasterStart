@@ -1,0 +1,22 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.16.3
+Date: 19. 02. 2018
+  Bugfixes:
+    - Fix multiplayer fix.
+---------------------------------------------------------------------------------------------------
+Version: 0.16.2
+Date: 26. 02. 2018
+  Changes:
+    - Multiplayer compatibility.
+  Bugfixes:	
+	- Fix multiplayer bug
+---------------------------------------------------------------------------------------------------
+Version: 0.16.1
+Date: 27. 12. 2017
+  Major Features:
+    - Update for Factorio 0.16.
+---------------------------------------------------------------------------------------------------
+Version: 0.15.0
+Date: 16. 07. 2017
+  Major Features:
+    - Added a starter kit with a small modular armor with a small fusion reactor, night vision, exoskeleton, roboport and 25 fusion construction robots.
