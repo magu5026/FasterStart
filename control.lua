@@ -15,16 +15,6 @@ function CheckAllPlayers()
 	end
 end
 
-local debrisItems = 
-{
-	['mini-power-armor'] = 1,
-	['mini-fusion-reactor-equipment'] = 1,
-	['night-vision-equipment'] = 1,
-	['exoskeleton-equipment'] = 1,
-	['personal-roboport-mk2-equipment'] = 1,
-	['fusion-construction-robot'] = 25,
-}
-
 function OnInit()
 	Init()
 	CheckAllPlayers()
@@ -34,7 +24,15 @@ function OnInit()
 		remote.call("freeplay", "set_skip_intro", settings.startup['skip-intro'].value)
 		
 		if not settings.startup['disable-crashsite'].value then 
-			remote.call("freeplay", "set_debris_items", debrisItems)
+			local items_to_insert = remote.call("freeplay", "get_debris_items")
+			items_to_insert['mini-power-armor'] = (items_to_insert['mini-power-armor'] or 0) + 1 
+			items_to_insert['mini-fusion-reactor-equipment'] = (items_to_insert['mini-fusion-reactor-equipment'] or 0) + 1 
+			items_to_insert['night-vision-equipment'] = (items_to_insert['night-vision-equipment'] or 0) + 1 
+			items_to_insert['exoskeleton-equipment'] = (items_to_insert['exoskeleton-equipment'] or 0) + 1 
+			items_to_insert['personal-roboport-mk2-equipment'] = (items_to_insert['personal-roboport-mk2-equipment'] or 0) + 1 
+			items_to_insert['fusion-construction-robot'] = (items_to_insert['fusion-construction-robot'] or 0) + 25
+						
+			remote.call("freeplay", "set_debris_items", items_to_insert)
 		end	
 	end
 end
