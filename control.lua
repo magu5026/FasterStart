@@ -24,7 +24,7 @@ script.on_init(OnInit)
 function OnConfigurationChanged(data)
 	if IsModChanged(data,modName) then
 		local oldVersion = GetOldVersion(data,modName)
-		if oldVersion < "00.17.04" then
+		if oldVersion < "00.17.05" or data.mod_changes[modName].old_version == "0.17.201" then
 			Init()
 			CheckAllPlayers()
 		end	
