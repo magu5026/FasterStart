@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 2024-10-31
+  Major Features:
+    - Update for Factorio 2.0.
+  Changes:
+    - Adjusted starting items.
+  Bugfixes:
+    - Fixed missing stuff from removing debris and ship drops.
+---------------------------------------------------------------------------------------------------
 Version: 1.1.3
 Date: 2022-04-29
   Bugfixes:

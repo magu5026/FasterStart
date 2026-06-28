@@ -1,3 +1,2 @@
-if mods['Krastorio2'] then
-	data.raw['equipment-grid']['mini-equipment-grid'].equipment_categories = {"armor", "universal-equipment", "robot-interaction-equipment"}
-end
+table.insert(data.raw['roboport-equipment']['personal-roboport-equipment'].categories, "simple-armor")
+table.insert(data.raw['night-vision-equipment']['night-vision-equipment'].categories, "simple-armor")

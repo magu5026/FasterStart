@@ -1,0 +1,38 @@
+{
+    "equipment-grid": [
+        [
+            "mini-equipment-grid",
+            "simple-equipment-grid"
+        ]
+    ],
+    "entity": [
+        [
+            "fusion-construction-robot",
+            "fission-construction-robot"
+        ],
+        [
+            "mini-power-armor",
+            "simple-modular-armor"
+        ]
+    ],
+    "item": [
+        [
+            "fusion-construction-robot",
+            "fission-construction-robot"
+        ],
+        [
+            "mini-power-armor",
+            "simple-modular-armor"
+        ],
+        [
+            "mini-fusion-reactor-equipment",
+            "simple-fission-reactor-equipment"
+        ]
+    ],
+    "equipment": [
+        [
+            "mini-fusion-reactor-equipment",
+            "simple-fission-reactor-equipment"
+        ]
+    ]
+}
