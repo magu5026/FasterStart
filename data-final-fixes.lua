@@ -12,3 +12,6 @@ local create_resistances = function()
 end
 
 data.raw["construction-robot"]["fission-construction-robot"].resistances = create_resistances()
+
+table.insert(data.raw['roboport-equipment']['personal-roboport-equipment'].categories, "simple-armor")
+table.insert(data.raw['night-vision-equipment']['night-vision-equipment'].categories, "simple-armor")

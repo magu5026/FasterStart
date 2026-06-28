@@ -4,8 +4,8 @@ local armor_name = "simple-modular-armor"
 local robot_name = "fission-construction-robot"
 
 local check_player = function(player_index)
-  player = game.get_player(player_index)
-  found = util_lib.table.contains(storage.player_list, player)
+  local player = game.get_player(player_index)
+  local found = util_lib.table.contains(storage.player_list, player)
   
   if not found then
     return player
@@ -20,25 +20,26 @@ local inventory_insert_item = function(inventory, item_name, item_count)
 end
 
 local add_equipment = function(grid, equipment_name)
-  equipment = grid.put({name = equipment_name})
+  local equipment = grid.put({name = equipment_name})
   equipment.energy = equipment.max_energy
 end
 
 local add_armor = function(player_index)
-  player = check_player(player_index)
+  local player = check_player(player_index)
   if not player or not player.valid then return end
   
-  character = player.cutscene_character or player.character or nil
+  local character = player.cutscene_character or player.character or nil
   if not character or not character.valid then return end
   
-  armor_inventory = character.get_inventory(defines.inventory.character_armor)
-  player_inventory = character.get_main_inventory()
+  local armor_inventory = character.get_inventory(defines.inventory.character_armor)
+  local player_inventory = character.get_main_inventory()
   
   if armor_inventory.get_item_count(armor_name) > 0 or player_inventory.get_item_count(robot_name) > 0 then
     table.insert(storage.player_list, player)
     return
   end
   
+  local armor
   if armor_inventory.is_empty() then
     armor = inventory_insert_item(armor_inventory, armor_name)
   else
@@ -60,7 +61,7 @@ local on_player_joined_game = function(event)
 end
 
 
-mod = {}
+local mod = {}
 
 mod.add_commands = function()
   commands.add_command("faster-start",nil,on_player_joined_game)

@@ -1,2 +1,0 @@
-table.insert(data.raw['roboport-equipment']['personal-roboport-equipment'].categories, "simple-armor")
-table.insert(data.raw['night-vision-equipment']['night-vision-equipment'].categories, "simple-armor")
