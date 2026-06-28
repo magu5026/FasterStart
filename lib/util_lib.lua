@@ -16,6 +16,17 @@ function table.contains(tab,elem)
 	return false
 end
 
+function table.count(self)
+	if self == nil or self == {} then return 0 end
+		
+	local i = 0
+	for _ in pairs(self) do
+		i = i + 1
+	end
+	return i
+end
+
 util_lib.table.contains = table.contains
+util_lib.table.count = table.count
 
 return util_lib

@@ -1,4 +1,4 @@
-local util_lib = require("util_lib")
+require("util_lib")
 
 local armor_name = "simple-modular-armor"
 local robot_name = "fission-construction-robot"
@@ -59,20 +59,26 @@ local on_player_joined_game = function(event)
   add_armor(event.player_index)
 end
 
-local faster_start = {}
 
-faster_start.events = {
+mod = {}
+
+mod.add_commands = function()
+  commands.add_command("faster-start",nil,on_player_joined_game)
+end
+
+mod.events =
+{
   [defines.events.on_player_joined_game] = on_player_joined_game
 }
 
---faster_start.on_configuration_changed = function()
+--mod.on_configuration_changed = function()
 --	storage.player_list = storage.player_list or {}
 --	storage.freeplay = storage.freeplay or false
 --	storage.disable_crashsite = settings.startup['disable-crashsite'].value
 --	storage.skip_intro = settings.startup['skip-intro'].value
 --end
 
-faster_start.on_init = function()
+mod.on_init = function()
   storage.player_list = {}
   storage.freeplay = false
   storage.disable_crashsite = settings.startup["disable-crashsite"].value
@@ -85,4 +91,4 @@ faster_start.on_init = function()
   end
 end
 
-return faster_start
+return mod
