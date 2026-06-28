@@ -83,9 +83,9 @@ function GiveArmor(player)
 	
 	local a_grid = armor.grid
 		a_grid.put({name = "mini-fusion-reactor-equipment"})
-		a_grid.put({name = "night-vision-equipment"})
 		a_grid.put({name = "exoskeleton-equipment"})
 		a_grid.put({name = "personal-roboport-mk2-equipment"})
+		a_grid.put({name = "night-vision-equipment"})
 	player_inventory.insert{name="fusion-construction-robot", count = 25}
 			
 	table.insert(global.PlayerList,player)
